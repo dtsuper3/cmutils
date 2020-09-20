@@ -1,7 +1,15 @@
 {
   "name": "cmutils",
   "version": "1.0.0",
+  "author": {
+    "name": "dtsuper3",
+    "email": "dtsuper3@gmail.com"
+  },
   "description": "A library for common utility functions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dtsuper3/cmutils"
+  },
   "main": "index.js",
   "scripts": {
     "start": "npm run tsc && node build/index.js",
@@ -15,7 +23,6 @@
     "common utils",
     "utils"
   ],
-  "author": "dtsuper3",
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.0.3"
