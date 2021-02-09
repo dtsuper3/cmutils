@@ -1,15 +1,11 @@
 {
-  "name": "@dtsuper3/cmutils",
+  "name": "cmutils",
   "version": "1.0.0",
   "author": {
     "name": "dtsuper3",
     "email": "dtsuper3@gmail.com"
   },
   "description": "A library for common utility functions",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dtsuper3/cmutils"
-  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -36,5 +32,13 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jsdoc": "^3.6.6",
     "prettier": "^2.1.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dtsuper3/cmutils"
+  },
+  "bugs": {
+    "url": "https://github.com/dtsuper3/cmutils/issues"
+  },
+  "homepage": "https://github.com/dtsuper3/cmutils#readme"
 }
