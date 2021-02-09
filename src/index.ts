@@ -2,7 +2,7 @@
  * Copy item to clipboard
  * @param  {string} text
  */
-const copyToClipboard = async (text: string): Promise<any> => {
+async function copyToClipboard(text: string): Promise<any> {
   try {
     const toCopy = text;
     return await navigator.clipboard.writeText(toCopy);
@@ -17,7 +17,7 @@ const copyToClipboard = async (text: string): Promise<any> => {
  * @param  {string} phone
  * @returns {boolean}
  */
-const isPhoneNoValid = (phone: string): boolean => {
+function isPhoneNoValid(phone: string): boolean {
   const exp = /^[0-9]{6,16}$/;
   return exp.test(String(phone));
 };
@@ -27,7 +27,7 @@ const isPhoneNoValid = (phone: string): boolean => {
  * @param  {string} str
  * @returns {boolean}
  */
-const isNumeric = (str: string): boolean => {
+function isNumeric(str: string): boolean {
   const exp = /^[0-9]{1,16}$/;
   return exp.test(String(str));
 };
@@ -37,7 +37,7 @@ const isNumeric = (str: string): boolean => {
  * @param  {string} email
  * @returns {boolean}
  */
-const isEmailValid = (email: string): boolean => {
+function isEmailValid(email: string): boolean {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
@@ -47,7 +47,7 @@ const isEmailValid = (email: string): boolean => {
  * @param  {string} pwd
  * @returns {boolean}
  */
-const isPasswordStrong = (pwd: string) => {
+function isPasswordStrong(pwd: string) {
   // const expression = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
   const expression = /^(?=.*\d)(?=.*[!@#$%^&*;])(?=.*[a-z])(?=.*[A-Z]).{8,25}$/;
   return expression.test(String(pwd));
@@ -58,15 +58,16 @@ const isPasswordStrong = (pwd: string) => {
  * @param  {string} key
  * @param  {string} item
  */
-const setItemInLocalStorage = (key: string, item: string): void =>
+function setItemInLocalStorage(key: string, item: string): void {
   localStorage.setItem(key, item);
+}
 
 /**
  * Get item from Local Storage based on key
  * @param  {string} key
  * @returns {any}
  */
-const getItemFromLocalStorage = (key: string): any => {
+function getItemFromLocalStorage(key: string): any {
   const data = localStorage.getItem(key);
   if (data && data !== undefined && data !== null) {
     return data;
@@ -78,7 +79,7 @@ const getItemFromLocalStorage = (key: string): any => {
  * Clear item from Local Storage based on key
  * @param  {string} key
  */
-const clearLocalStorageItemByKey = (key: string): void => {
+function clearLocalStorageItemByKey(key: string): void {
   if (key) {
     localStorage.removeItem(key);
   }
@@ -87,21 +88,25 @@ const clearLocalStorageItemByKey = (key: string): void => {
 /**
  * Clear all item from Local Storage
  */
-const clearAllItemFromLocalStorage = (): void => {
+function clearAllItemFromLocalStorage(): void {
   localStorage.clear();
 };
 
 /**
  * Scroll window screen to top of viewport
  */
-const scrollToTop = (): void => window.scrollTo({ top: 0 });
+function scrollToTop(): void {
+  if (window) {
+    window.scrollTo({ top: 0 });
+  }
+}
 
 /**
  * Make text Camel Case or Pascal Case
  * @param  {string} text
  * @returns {string}
  */
-const makeTextCapitalize = (text: string): string => {
+function makeTextCapitalize(text: string): string {
   if (typeof text === 'string' && text.length > 0) {
     return text
       .split(' ')
@@ -116,7 +121,7 @@ const makeTextCapitalize = (text: string): string => {
  * @param  {string} token
  * @returns {(any|undefined)}
  */
-const parseJwt = (token: string): any | undefined => {
+function parseJwt(token: string): any | undefined {
   if (token !== undefined) {
     const base64Url = token.split('.')[1];
     if (base64Url !== undefined) {
@@ -145,7 +150,7 @@ const parseJwt = (token: string): any | undefined => {
  * @param  {any} event
  * @returns {boolean}
  */
-const inputNumberOnlyValidation = (event: any): boolean => {
+function inputNumberOnlyValidation(event: any): boolean {
   if (event === undefined || event === null) {
     return false;
   }
@@ -161,7 +166,7 @@ const inputNumberOnlyValidation = (event: any): boolean => {
  * @param  {string} text
  * @returns {boolean}
  */
-const isURLValid = (text: string): boolean => {
+function isURLValid(text: string): boolean {
   const RE = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
   if (text) {
     return RE.test(text);
@@ -174,7 +179,7 @@ const isURLValid = (text: string): boolean => {
  * @param  {string} str
  * @returns {boolean}
  */
-const hasWhiteSpace = (str: string): boolean => {
+function hasWhiteSpace(str: string): boolean {
   return !str.match(/\w/);
 };
 
@@ -184,10 +189,10 @@ const hasWhiteSpace = (str: string): boolean => {
  * @param  {number} decimal_precision
  * @returns {number}
  */
-const numberDecimalPrecision = (
+function numberDecimalPrecision(
   number: number,
   decimal_precision: number
-): number => {
+): number {
   return parseFloat(number.toFixed(decimal_precision));
 };
 
@@ -195,11 +200,11 @@ const numberDecimalPrecision = (
  * @param  {number} unixTimestamp
  * @returns {number} human readable date time string
  */
-const unixToReadableFormatDate = (unixTimestamp: number): string => {
+function unixToReadableFormatDate(unixTimestamp: number): string {
   return new Date(unixTimestamp).toLocaleDateString();
 };
 
-const chunkArray = (arr: any[], len: number) => {
+function chunkArray(arr: any[], len: number) {
   const chunks = [],
     n = arr.length;
   let i = 0;
@@ -210,7 +215,7 @@ const chunkArray = (arr: any[], len: number) => {
   return chunks;
 };
 
-const formatDateTime = (timeStamp: number, onlyDate = false): string => {
+function formatDateTime(timeStamp: number, onlyDate = false): string {
   const d = new Date(timeStamp);
   let dateTimeString =
     ('0' + d.getDate()).slice(-2) +
@@ -231,15 +236,7 @@ const formatDateTime = (timeStamp: number, onlyDate = false): string => {
   return dateTimeString;
 };
 
-// const currencyFormatter = (value: string | number, currency: string | undefined = undefined, minimumFractionDigits: number = 4) => {
-//     if (value === undefined && value === null) {
-//         return 0.0000
-//     }
-//     // return Intl.NumberFormat('en-IN', { ...(currency !== undefined ? { style: 'currency', currency: currency } : {}), minimumFractionDigits: minimumFractionDigits, }).format(value as number);
-//     return Intl.NumberFormat('en-IN', { ...(currency !== undefined ? { style: 'currency', currency: currency } : {}) }).format(value as number);
-// }
-
-const formatCurrency = (num: number): string => {
+function formatCurrency(num: number): string {
   if (
     isNaN(num) ||
     num === undefined ||
@@ -273,15 +270,15 @@ const formatCurrency = (num: number): string => {
   return newStr;
 };
 
-const isObjectEmpty = (obj: any): boolean => {
+function isObjectEmpty(obj: any): boolean {
   return Object.keys(obj).length === 0;
 };
 
-const sanitizeString = (str: string): string => {
+function sanitizeString(str: string): string {
   return str ? str.trim() : '';
 };
 
-const queryStringParse = (string: string): any => {
+function queryStringParse(string: string): any {
   const parsed: any = {};
   if (string != '') {
     string = string.substring(string.indexOf('?') + 1);
@@ -294,7 +291,7 @@ const queryStringParse = (string: string): any => {
   return parsed;
 };
 
-const formatBytes = (bytes: number, decimals = 2): string => {
+function formatBytes(bytes: number, decimals = 2): string {
   if (bytes === 0) {
     return '0 Bytes';
   }
@@ -308,7 +305,7 @@ const formatBytes = (bytes: number, decimals = 2): string => {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 };
 
-const isValidPrecisionFloat = (value: string, precision: number): boolean => {
+function isValidPrecisionFloat(value: string, precision: number): boolean {
   // console.log({ precision });
   const num = parseFloat(value);
 
@@ -331,10 +328,11 @@ const isValidPrecisionFloat = (value: string, precision: number): boolean => {
   return decimalLength <= precision;
 };
 
-const setItemInSessionStorage = (key: string, item: string): void =>
+function setItemInSessionStorage(key: string, item: string): void {
   sessionStorage.setItem(key, item);
+}
 
-const getItemFromSessionStorage = (key: string): string | null => {
+function getItemFromSessionStorage(key: string): string | null {
   const data = sessionStorage.getItem(key);
   if (data !== undefined && data !== null && data) {
     return data;
@@ -342,17 +340,17 @@ const getItemFromSessionStorage = (key: string): string | null => {
   return null;
 };
 
-const clearSessionStorageByKey = (key: string): void => {
+function clearSessionStorageByKey(key: string): void {
   if (key) {
     sessionStorage.removeItem(key);
   }
 };
 
-const clearAllItemSessionStorage = () => {
+function clearAllItemSessionStorage() {
   sessionStorage.clear();
 };
 
-const getMediumDimensionImage = (str: string, size: number) => {
+function getMediumDimensionImage(str: string, size: number) {
   const splitImg = str.split('/');
   const img = splitImg.pop();
   const dim = splitImg.pop();
