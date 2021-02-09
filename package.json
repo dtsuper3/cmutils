@@ -10,11 +10,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "npm run build && node dist/index.js",
-    "build": "tsc",
-    "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix",
-    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "jsdocs": "jsdoc build/*.js"
+    "build": "tsc"
   },
   "keywords": [
     "common utils",
@@ -23,15 +19,6 @@
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.0.3"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.1.1",
-    "@typescript-eslint/parser": "^4.1.1",
-    "eslint": "^7.9.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "jsdoc": "^3.6.6",
-    "prettier": "^2.1.2"
   },
   "repository": {
     "type": "git",
