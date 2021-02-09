@@ -10,10 +10,11 @@
     "type": "git",
     "url": "https://github.com/dtsuper3/cmutils"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "npm run tsc && node build/index.js",
-    "tsc": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "build": "tsc",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
