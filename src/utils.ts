@@ -4,11 +4,11 @@
  * @returns {boolean}
  */
 function isNumeric(str: string): boolean {
-    if (isNaN(str as any)) {
-        return false
-    }
-    return true;
-};
+  if (isNaN(str as any)) {
+    return false;
+  }
+  return true;
+}
 
 /**
  * Check if email is valid or not
@@ -16,13 +16,10 @@ function isNumeric(str: string): boolean {
  * @returns {boolean}
  */
 function isEmailValid(email: string): boolean {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-};
-export {
-    isNumeric,
-    isEmailValid
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
+export { isNumeric, isEmailValid };
 
 // /**
 //  * Check if password is strong or not
