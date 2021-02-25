@@ -1,0 +1,9 @@
+{
+    "entryPoints": [
+        "./src"
+    ],
+    "out": "docs",
+    "exclude": [
+        "**/*+(index|.test).ts"
+    ]
+}
