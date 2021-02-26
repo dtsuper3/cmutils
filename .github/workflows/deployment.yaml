@@ -20,6 +20,6 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy to NPM registry
-        run: npm run publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
