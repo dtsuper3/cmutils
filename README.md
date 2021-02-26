@@ -31,4 +31,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate
 ## License
 
-[ISC](https://choosealicense.com/licenses/isc/)
+[ISC](https://choosealicense.com/licenses/isc/){:target="_blank"}
