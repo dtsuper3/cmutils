@@ -1,3 +1,4 @@
+//  eslint-disable  @typescript-eslint/no-explicit-any
 /**
  * Check if string is numeric or not
  * @param  {string} str
@@ -25,15 +26,15 @@ function isEmailValid(email: string): boolean {
  * @param  {string} pwd
  * @returns {boolean}
  */
-function isPasswordStrong(pwd: string) {
+function isPasswordStrong(pwd: string): boolean {
   // const expression = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
   const expression = /^(?=.*\d)(?=.*[!@#$%^&*;])(?=.*[a-z])(?=.*[A-Z]).{8,25}$/;
   return expression.test(String(pwd));
-};
+}
 
 /**
  * It parses query string
- * @param {string} 
+ * @param {string}
  * @returns {object}
  */
 
@@ -43,15 +44,15 @@ function parseQueryString(queryStr: string | undefined | null): any {
     return parsed;
   }
   if (queryStr != "") {
-    queryStr = queryStr.substring(queryStr.indexOf('?') + 1);
-    const p1 = queryStr.split('&');
-    p1.forEach(value => {
-      const params = value.split('=');
+    queryStr = queryStr.substring(queryStr.indexOf("?") + 1);
+    const p1 = queryStr.split("&");
+    p1.forEach((value) => {
+      const params = value.split("=");
       parsed[params[0]] = params[1];
     });
   }
   return parsed;
-};
+}
 
 /**
  * Only numeric value allowed
@@ -67,15 +68,9 @@ function allowNumberOnly(keyCode: number | null | undefined): boolean {
     return false;
   }
   return true;
-};
+}
 
-export {
-  isNumeric,
-  isEmailValid,
-  isPasswordStrong,
-  parseQueryString,
-  allowNumberOnly
-};
+export { isNumeric, isEmailValid, isPasswordStrong, parseQueryString, allowNumberOnly };
 
 // /**
 //  * Scroll window screen to top of viewport
