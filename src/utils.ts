@@ -1,3 +1,4 @@
+//  eslint-disable  @typescript-eslint/no-explicit-any
 /**
  * Check if string is numeric or not
  * @param  {string} str
@@ -19,18 +20,57 @@ function isEmailValid(email: string): boolean {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
-export { isNumeric, isEmailValid };
 
-// /**
-//  * Check if password is strong or not
-//  * @param  {string} pwd
-//  * @returns {boolean}
-//  */
-// function isPasswordStrong(pwd: string) {
-//     // const expression = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
-//     const expression = /^(?=.*\d)(?=.*[!@#$%^&*;])(?=.*[a-z])(?=.*[A-Z]).{8,25}$/;
-//     return expression.test(String(pwd));
-// };
+/**
+ * Check if password is strong or not
+ * @param  {string} pwd
+ * @returns {boolean}
+ */
+function isPasswordStrong(pwd: string): boolean {
+  // const expression = /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
+  const expression = /^(?=.*\d)(?=.*[!@#$%^&*;])(?=.*[a-z])(?=.*[A-Z]).{8,25}$/;
+  return expression.test(String(pwd));
+}
+
+/**
+ * It parses query string
+ * @param {string}
+ * @returns {object}
+ */
+
+function parseQueryString(queryStr: string | undefined | null): any {
+  const parsed: any = {};
+  if (queryStr === undefined || queryStr === null) {
+    return parsed;
+  }
+  if (queryStr != "") {
+    queryStr = queryStr.substring(queryStr.indexOf("?") + 1);
+    const p1 = queryStr.split("&");
+    p1.forEach((value) => {
+      const params = value.split("=");
+      parsed[params[0]] = params[1];
+    });
+  }
+  return parsed;
+}
+
+/**
+ * Only numeric value allowed
+ * @param  {number} keyCode
+ * @returns {boolean}
+ */
+function allowNumberOnly(keyCode: number | null | undefined): boolean {
+  if (keyCode === undefined || keyCode === null) {
+    return false;
+  }
+  const key = keyCode;
+  if (key > 31 && (key < 48 || key > 57)) {
+    return false;
+  }
+  return true;
+}
+
+export { isNumeric, isEmailValid, isPasswordStrong, parseQueryString, allowNumberOnly };
 
 // /**
 //  * Scroll window screen to top of viewport
