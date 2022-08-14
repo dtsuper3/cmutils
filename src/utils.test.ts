@@ -1,4 +1,16 @@
-import { isNumeric, isEmailValid, isPasswordStrong, parseQueryString, allowNumberOnly } from "./utils";
+import {
+  isNumeric,
+  isEmailValid,
+  isPasswordStrong,
+  parseQueryString,
+  stringCapitalize,
+  textCapitalize,
+  chunkArray,
+  isURLValid,
+  isObjectEmpty,
+  formatBytes,
+} from "./utils";
+
 describe("isNumeric()", () => {
   describe("when input string contains number", () => {
     test("should be true", () => {
@@ -53,19 +65,61 @@ describe("parseQueryString()", () => {
   });
 });
 
-describe("allowNumberOnly()", () => {
-  describe("when input a keyboard key code", () => {
-    test("should pass when valid", () => {
-      expect(allowNumberOnly(30)).toBe(true);
-    });
-    test("should pass when invalid", () => {
-      expect(allowNumberOnly(37)).toBe(false);
-    });
-    test("should pass when invalid greater than 57", () => {
-      expect(allowNumberOnly(60)).toBe(false);
-    });
-    test("should pass when undefined", () => {
-      expect(allowNumberOnly(undefined)).toBe(false);
-    });
+describe("stringCapitalize()", () => {
+  test("should capitalize string", () => {
+    expect(stringCapitalize("test")).toBe("Test");
+  });
+  test("should return same string", () => {
+    expect(stringCapitalize("")).toBe("");
+  });
+});
+
+describe("textCapitalize()", () => {
+  test("should capitalize each string", () => {
+    expect(textCapitalize("test text")).toBe("Test Text");
+  });
+  test("should return same string", () => {
+    expect(textCapitalize("")).toBe("");
+  });
+});
+
+describe("chunkArray()", () => {
+  test("should create chunk of array", () => {
+    expect(chunkArray([1, 2, 3, 4], 2)).toMatchObject([
+      [1, 2],
+      [3, 4],
+    ]);
+  });
+});
+
+describe("isURLValid()", () => {
+  test("should be valid url", () => {
+    expect(isURLValid("http://test.com")).toBe(true);
+  });
+
+  test("should be invalid url", () => {
+    expect(isURLValid("test.com")).toBe(false);
+  });
+});
+
+describe("isObjectEmpty()", () => {
+  test("should be a empty object", () => {
+    expect(isObjectEmpty({})).toBe(true);
+  });
+
+  test("should not be a empty object", () => {
+    expect(isObjectEmpty({ a: 1 })).toBe(false);
+  });
+});
+
+describe("formatBytes()", () => {
+  test("should format KB byte", () => {
+    expect(formatBytes(1024)).toBe("1 KB");
+  });
+  test("should format KB byte", () => {
+    expect(formatBytes(1024, -1)).toBe("1 KB");
+  });
+  test("should not format byte", () => {
+    expect(formatBytes(0)).toBe("0");
   });
 });
